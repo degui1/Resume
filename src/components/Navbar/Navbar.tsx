@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import { Grid, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Paper } from "@mui/material";
-import { Home } from "@mui/icons-material";
+import { Box, Grid, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Typography, useTheme } from "@mui/material";
+import { AttachFile, Home, Info } from "@mui/icons-material";
 import { MenuSocialMedias } from "../MenuSocialMedias/MenuSocialMedias";
 
 type RouteObject = {
@@ -17,15 +17,35 @@ export function Navbar() {
     {
       id: crypto.randomUUID(),
       text: "Home",
-      icon: <Home />,
+      icon: <Home color="secondary" />,
       to: "/",
     },
+    {
+      id: crypto.randomUUID(),
+      text: "Resume",
+      icon: <AttachFile color="secondary" />,
+      to: "/resume",
+    },
+    {
+      id: crypto.randomUUID(),
+      text: "About",
+      icon: <Info color="secondary" />,
+      to: "/about",
+    },
   ]
+  const theme = useTheme();
   return (
-    <Paper elevation={1} sx={{ maxWidth: "100%", height: "100%" }}>
+    <Box sx={{ height: "100%" }} bgcolor={theme.palette.background.paper} py={2}>
       <Grid container direction="column" height="100%">
-        <Grid item xs={2}>
-          test
+        <Grid item xs={2} textAlign="center">
+          <Grid container direction="column" height="100%">
+            <Grid item xs={6}>x</Grid>
+            <Grid item xs={6}>
+              <Typography variant="h6" color={theme.palette.primary.main}>
+                Guilherme Gonçalves
+              </Typography>
+            </Grid>
+          </Grid>
         </Grid>
         <Grid item xs={9}>
           <List>
@@ -35,7 +55,7 @@ export function Navbar() {
                   <ListItemIcon>
                     {icon}
                   </ListItemIcon>
-                  <ListItemText primary={text} />
+                  <ListItemText primary={text} sx={{ color: `${theme.palette.primary.main}` }} />
                 </ListItemButton>
               </ListItem>
             ))}
@@ -45,6 +65,6 @@ export function Navbar() {
           <MenuSocialMedias />
         </Grid>
       </Grid>
-    </Paper>
+    </Box>
   )
 }

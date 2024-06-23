@@ -3,7 +3,6 @@ import { Box, IconButton } from "@mui/material";
 import instagram from "../../../public/images/instagram.svg";
 import linkedIn from "../../../public/images/linkedIn.svg";
 import { useRef } from "react";
-import { Delete } from "@mui/icons-material";
 
 type SocialMediaObject = {
   id: string;
@@ -32,7 +31,7 @@ export function MenuSocialMedias(): React.ReactNode {
   }
 
   return (
-    <Box sx={{ display: "flex", justifyContent: "center"}}>
+    <Box height="100%" justifyContent="center" display="flex">
       {socialMedias.map(({id, icon, redirectPath}) => {
         return (
           <IconButton key={id} sx={{ maxWidth: "40px"}} onClick={redirectTo}>
