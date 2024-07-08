@@ -3,3 +3,20 @@
   margin: 0;
   padding: 0;
 }
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+  background-color: #1B1B1B;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #76ABAE; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #79868C; 
+}
