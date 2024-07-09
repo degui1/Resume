@@ -4,17 +4,30 @@ export const DarkTheme = createTheme({
   palette: {
     mode: 'dark',
     primary: {
-      main: '#fff',
+      main: '#EAEAEA',
     },
     secondary: {
-      main: '#76ABAE',
+      main: '#FF2E63',
     },
-    background: {
-      default: '#1B1B1B',
-    },
+    // background: {
+    //   default: '#252A34',
+    // },
     text: {
-      primary: '#fff',
+      primary: '#EAEAEA',
       secondary: '#79868C',
     },
+    // primary: {
+    //   main: '#fff',
+    // },
+    // secondary: {
+    //   main: '#76ABAE',
+    // },
+    // background: {
+    //   default: '#1B1B1B',
+    // },
+    // text: {
+    //   primary: '#fff',
+    //   secondary: '#79868C',
+    // },
   },
 })

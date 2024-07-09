@@ -1,5 +1,22 @@
-import { AppBar, Box, Button, Grid, Toolbar, Typography } from '@mui/material'
+import {
+  CopyrightOutlined,
+  GitHub,
+  Instagram,
+  LinkedIn,
+} from '@mui/icons-material'
+import {
+  AppBar,
+  Box,
+  Button,
+  Divider,
+  Grid,
+  IconButton,
+  Toolbar,
+  Typography,
+} from '@mui/material'
 import { Outlet } from 'react-router-dom'
+
+import Logo from '../../public/Logo1.svg'
 
 export function DefaultTemplate() {
   return (
@@ -10,20 +27,19 @@ export function DefaultTemplate() {
       flexDirection="column"
       justifyContent="flex-start"
       alignItems="center"
-      sx={{}}
     >
       <AppBar
         position="static"
         elevation={0}
         sx={{
           bgcolor: 'transparent',
-          maxWidth: '1920px',
+          maxWidth: 'xl',
         }}
       >
         <Toolbar>
           <Grid container justifyContent="space-between">
             <Grid item>
-              <Typography variant="h5">DevGG</Typography>
+              <img src={Logo} alt="Logo" />
             </Grid>
             <Grid item>
               <Grid container justifyContent="center" spacing={3}>
@@ -46,9 +62,38 @@ export function DefaultTemplate() {
           </Grid>
         </Toolbar>
       </AppBar>
-      <Grid container maxWidth="1920px" justifyContent="center" py={5}>
-        <Grid item xs={10}>
+
+      <Grid container maxWidth="xl" justifyContent="center">
+        <Grid item xs={12}>
           <Outlet />
+        </Grid>
+      </Grid>
+
+      <Grid container maxWidth="xl" component="footer" mt={10}>
+        <Grid item xs={12}>
+          <Box display="flex" justifyContent="space-between">
+            <img src={Logo} alt="Logo" />
+            <Box display="flex" justifyContent="flex-end">
+              <IconButton>
+                <Instagram />
+              </IconButton>
+              <IconButton>
+                <GitHub />
+              </IconButton>
+              <IconButton>
+                <LinkedIn />
+              </IconButton>
+            </Box>
+          </Box>
+          <Divider color="#fff" />
+        </Grid>
+        <Grid item xs={12}>
+          <Box display="flex" justifyContent="center" pt={2}>
+            <Typography display="flex" gap="1rem" color="primary">
+              <CopyrightOutlined /> 2024, Guilherme Gonçalves. All rights
+              reserved.
+            </Typography>
+          </Box>
         </Grid>
       </Grid>
     </Box>
