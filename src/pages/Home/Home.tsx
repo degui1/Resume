@@ -6,13 +6,64 @@ import { InfoCard } from '../../components/InfoCard/InforCard'
 
 import ladyJustice from '../../assets/Lady_Justice.webp'
 import { GetInTouch } from '../../components/GetInTouch/GetInTouch'
-import { ImagesList } from '../../components/ImagesList/ImagesList'
+import { ImgObject, ImagesList } from '../../components/ImagesList/ImagesList'
+import { useId } from 'react'
+
+import ReactLogo from '../../../public/images/react.svg'
+import NodeJsLogo from '../../../public/images/nodejs_logo.svg'
+import NestJsLogo from '../../../public/images/nestjs_logo.svg'
+import TypeScript from '../../../public/images/Typescript_logo.svg'
+
+import AWS from '../../../public/images/AWS.svg'
+import tailwind from '../../../public/images/tailwind.svg'
+import docker from '../../../public/images/docker.svg'
 
 export function Home() {
   const theme = useTheme()
 
+  const technologiesWorkingWithImages: ImgObject[] = [
+    {
+      id: useId(),
+      alt: 'React',
+      src: ReactLogo,
+    },
+    {
+      id: useId(),
+      alt: 'NodeJs',
+      src: NodeJsLogo,
+    },
+    {
+      id: useId(),
+      alt: 'Nestjs',
+      src: NestJsLogo,
+    },
+    {
+      id: useId(),
+      alt: 'Typescript',
+      src: TypeScript,
+    },
+  ]
+
+  const technologiesLearningImages: ImgObject[] = [
+    {
+      id: useId(),
+      alt: 'Docker',
+      src: docker,
+    },
+    {
+      id: useId(),
+      alt: 'AWS',
+      src: AWS,
+    },
+    {
+      id: useId(),
+      alt: 'Tailwindcss',
+      src: tailwind,
+    },
+  ]
+
   return (
-    <Grid container gap={10}>
+    <Grid container rowSpacing={10}>
       <Grid item xs={12}>
         <Grid
           container
@@ -36,11 +87,14 @@ export function Home() {
           </Grid>
           <Grid item>
             <Typography
-              variant="h2"
+              variant="h1"
               color="primary"
               fontWeight="bold"
               textAlign="center"
               lineHeight="150%"
+              sx={{
+                fontSize: { xs: '3rem', sm: '6rem' },
+              }}
             >
               I&apos;m a web developer
               <Typography variant="inherit" color="secondary">
@@ -69,41 +123,35 @@ export function Home() {
       </Grid>
 
       <Grid item xs={12}>
-        <Grid container justifyContent="center">
+        <Grid container rowGap={5}>
           <Grid item xs={12} sm={6}>
             <InfoCard
               title="Technologies I work with"
-              content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-          varius enim in eros elementum tristique. Lorem ipsum dolor sit amet,
-          consectetur adipiscing elit. Suspendisse varius enim in eros elementum
-          tristique. dolor sit amet, consectetur adipiscing elit. Suspendisse
-          varius enim in eros elementum tristique."
+              content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique."
             />
           </Grid>
           <Grid item xs={12} sm={6}>
-            <ImagesList />
+            <ImagesList images={technologiesWorkingWithImages} />
           </Grid>
         </Grid>
       </Grid>
 
       <Grid item xs={12}>
-        <Grid container justifyContent="center">
+        <Grid container rowGap={5}>
+          <Grid item xs={12} sm={6}>
+            <ImagesList images={technologiesLearningImages} />
+          </Grid>
           <Grid item xs={12} sm={6}>
             <InfoCard
               title="Technologies I am learning"
-              content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-          varius enim in eros elementum tristique. Lorem ipsum dolor sit amet,
-          consectetur a."
+              content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique."
             />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <ImagesList />
           </Grid>
         </Grid>
       </Grid>
 
       <Grid item xs={12}>
-        <Grid container justifyContent="center">
+        <Grid container>
           <Grid item xs={12} sm={6}>
             <InfoCard
               title="Get in touch"

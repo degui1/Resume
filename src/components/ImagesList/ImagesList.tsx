@@ -1,41 +1,87 @@
-import { Grid } from '@mui/material'
+import { Box, Grid, Card, useMediaQuery, useTheme } from '@mui/material'
 
-import x from '../../assets/Lady_Justice.webp'
-
-type ImgObject = {
+export type ImgObject = {
+  id: string
   src: string
-  title: string
-  description: string
+  alt: string
 }
 
-const itemData: ImgObject[] = [
-  {
-    src: '../../assets/Lady_Justice.webp',
-    description: 'Since 2020',
-    title: 'React',
-  },
-  {
-    src: '../../assets/Lady_Justice.webp',
-    description: 'Since 2020',
-    title: 'React',
-  },
-  {
-    src: '../../assets/Lady_Justice.webp',
-    description: 'Since 2020',
-    title: 'React',
-  },
-]
+interface IImageListProperties {
+  images: ImgObject[]
+}
 
-export function ImagesList() {
+export function ImagesList({ images }: IImageListProperties) {
+  const theme = useTheme()
+  const isMobileOrSmallDevice = useMediaQuery(
+    theme.breakpoints.between('xs', 'sm'),
+  )
+
   return (
-    <Grid container>
-      {itemData.map((item) => {
+    // <Box
+    //   sx={{
+    //     display: 'flex',
+    //     gap: 1,
+    //     py: 1,
+    //     overflow: 'auto',
+    //     scrollSnapType: 'x mandatory',
+    //     '& > *': {
+    //       scrollSnapAlign: 'center',
+    //     },
+    //     '::-webkit-scrollbar': { display: 'none' },
+    //   }}
+    // >
+    //   {images.map((image) => {
+    //     return (
+    //       <img
+    //         srcSet={`${image.src}?h=120&fit=crop&auto=format&dpr=2 2x`}
+    //         src={`${image.src}?h=120&fit=crop&auto=format`}
+    //         alt={image.alt}
+    //         key={image.id}
+    //       />
+    //     )
+    //   })}
+    // </Box>
+    <Grid
+      container
+      rowGap={5}
+      textAlign="center"
+      wrap={isMobileOrSmallDevice ? 'nowrap' : 'wrap'}
+      spacing={5}
+      sx={
+        isMobileOrSmallDevice
+          ? {
+              overflow: 'auto',
+              scrollSnapType: 'x mandatory',
+              '& > *': {
+                scrollSnapAlign: 'center',
+              },
+              '::-webkit-scrollbar': { display: 'none' },
+            }
+          : null
+      }
+    >
+      {images.map((image) => {
         return (
-          <Grid item key={item.src} xs={12} sm={6}>
-            <img src={x} alt="" style={{ width: '200px' }} />
+          <Grid
+            item
+            xs={12}
+            sm={6}
+            key={image.id}
+            justifyContent="center"
+            alignItems="center"
+          >
+            <img
+              src={image.src}
+              alt={image.alt}
+              style={{
+                height: `${isMobileOrSmallDevice ? '50px' : '80px'}`,
+              }}
+            />
           </Grid>
         )
       })}
     </Grid>
   )
 }
+
+// ;

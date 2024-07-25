@@ -11,7 +11,14 @@ export function InfoCard({ content, title }: IInfoCardProps) {
   return (
     <Stack spacing={2} height="100%">
       <Box>
-        <Typography variant="h3" color="primary" fontWeight="bold">
+        <Typography
+          variant="h3"
+          color="primary"
+          fontWeight="bold"
+          sx={{
+            fontSize: { xs: '2rem', sm: '3rem' },
+          }}
+        >
           {title}
         </Typography>
       </Box>
